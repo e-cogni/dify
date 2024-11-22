@@ -306,6 +306,7 @@ services:
     networks:
       - ssrf_proxy_network
       - dokploy-network
+      - default
 
   # worker service
   # The Celery worker for processing the queue.
@@ -326,6 +327,7 @@ services:
     networks:
       - ssrf_proxy_network
       - dokploy-network
+      - default
 
   # Frontend web application.
   web:
@@ -423,6 +425,7 @@ services:
     networks:
       - ssrf_proxy_network
       - dokploy-network
+      - default
 
   # Certbot service
   # use `docker-compose --profile certbot up` to start the certbot service.
@@ -496,7 +499,8 @@ services:
       - "traefik.http.routers.${HASH}.tls.certresolver=cloudflare"
       - "traefik.http.routers.${HASH}.tls.domains[0].main=dify.e-cogni.com"
       - "traefik.http.routers.${HASH}.tls.domains[0].sans=*.dify.e-cogni.com"
-      - traefik.http.services.${HASH}.loadbalancer.server.port=80
+      - "traefik.http.services.${HASH}.loadbalancer.server.port=80"
+      - "traefik.http.services.${HASH}.loadbalancer.passhostheader=true"
 
   # The Weaviate vector store.
   weaviate:
