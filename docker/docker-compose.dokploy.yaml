@@ -501,12 +501,13 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${HASH}.rule=Host(`dify.e-cogni.com`)"
       - "traefik.http.routers.${HASH}.entrypoints=websecure"
       - "traefik.http.routers.${HASH}.tls=true"
       - "traefik.http.routers.${HASH}.tls.certresolver=cloudflare"
+      - "traefik.http.routers.${HASH}.rule=Host(`dify.e-cogni.com`) || Host(`api-dify.e-cogni.com`) || HostRegexp(`{subdomain:[a-z]+}.dify.e-cogni.com`)"
       - "traefik.http.routers.${HASH}.tls.domains[0].main=dify.e-cogni.com"
       - "traefik.http.routers.${HASH}.tls.domains[0].sans=*.dify.e-cogni.com"
+      - "traefik.http.routers.${HASH}.tls.domains[1].main=api-dify.e-cogni.com"
       - "traefik.http.services.${HASH}.loadbalancer.server.port=80"
       - "traefik.http.services.${HASH}.loadbalancer.passhostheader=true"
 
