@@ -491,6 +491,9 @@ services:
     expose:
       - 80
       - 443
+    networks:
+      - default
+      - dokploy-network
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.${HASH}.rule=Host(`dify.e-cogni.com`)"
