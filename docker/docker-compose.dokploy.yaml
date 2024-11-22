@@ -492,7 +492,6 @@ services:
       - 80
       - 443
     networks:
-      - default
       - dokploy-network
     labels:
       - "traefik.enable=true"
