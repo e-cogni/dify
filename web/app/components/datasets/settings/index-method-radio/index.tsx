@@ -50,7 +50,7 @@ const IndexMethodRadio = ({
   ]
 
   return (
-    <div className={classNames('flex justify-between w-full gap-2')}>
+    <div className={classNames('flex w-full justify-between gap-2')}>
       {
         options.map((option) => {
           const isParentChild = docForm === ChunkingMode.parentChild
@@ -91,7 +91,7 @@ const IndexMethodRadio = ({
                 </OptionCard>
               </PortalToFollowElemTrigger>
               <PortalToFollowElemContent style={{ zIndex: 60 }}>
-                <div className='p-3 bg-components-tooltip-bg border-components-panel-border text-xs font-medium text-text-secondary rounded-lg shadow-lg'>
+                <div className='rounded-lg border-components-panel-border bg-components-tooltip-bg p-3 text-xs font-medium text-text-secondary shadow-lg'>
                   {t('datasetSettings.form.indexMethodChangeToEconomyDisabledTip')}
                 </div>
               </PortalToFollowElemContent>
